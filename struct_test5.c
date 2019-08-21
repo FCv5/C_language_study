@@ -31,7 +31,7 @@ struct student *creat()
 		p1 = (struct student *)malloc(LEN);
 		scanf("%1d, %f", &p1->num, &p1->score);
 	}
-	p2 -> next = NULL;
+	p2->next = NULL;
 	return(head);
 }
 
@@ -43,11 +43,11 @@ void print(struct student *head)
 	if (head != NULL)
 		do
 		{
-			printf("%1d %5.1f\n", p -> num, p -> score);
-			p = p -> next;
+			printf("%1d %5.1f\n", p->num, p->score);
+			p = p->next;
 		}while (p != NULL);
 }
-/**
+
 struct student *del(struct student *head, long num)
 {
 	struct student *p1, *p2;
@@ -57,27 +57,27 @@ struct student *del(struct student *head, long num)
 		goto end;
 	}
 	p1 = head;
-	while (num != p1 -> num && p1 -> next != NULL)
+	while (num != p1->num && p1->next != NULL)
 	{
 		p2 = p1;
-		p1 = p1 ->next;
+		p1 = p1->next;
 	}
-	if (num == p1 -> num)
+	if (num == p1->num)
 	{
 		if(p1 == head)
-			head = p1 -> next;
+			head = p1->next;
 		else
-			p2 -> next = p1 -> next;
+			p2->next = p1->next;
 		printf("delete:%1d\n", num);
 		n--;
 	}
 	else
 		printf("%1d not been found!\n", num);
-	end;
-	return(head);
+	end:
+		return(head);
 }
 
-struct student *insert(struct student *head, *stud)
+struct student *insert(struct student *head, struct student *stud)
 {
 	struct student *p0, *p1, *p2;
 	p1 = head;
@@ -85,35 +85,35 @@ struct student *insert(struct student *head, *stud)
 	if (head == NULL)
 	{
 		head = p0;
-		p0 -> next = NULL;
+		p0->next = NULL;
 	}
 	else
 	{
-		while ((p0 -> num >p1 -> num) && (p1 -> next != NULL))
+		while ((p0->num > p1->num) && (p1->next != NULL))
 		{
 			p2 = p1;
-			p1 = p1 -> next;
+			p1 = p1->next;
 		}
-		if (p0 -> num <= p1 -> num)
+		if (p0->num <= p1->num)
 		{
 			if (head == p1)
 				head = p0;
 			else
 			{
-				p2 -> next = p0;
-				p0 -> next = p1;
+				p2->next = p0;
+				p0->next = p1;
 			}
 		}
 		else
 		{
-			p1 -> next = p0;
-			p0 -> next = NULL;
+			p1->next = p0;
+			p0->next = NULL;
 		}
 	}
 	n++;
 	return(head);
 }
-**/
+
 main()
 {
 	struct student *head, stu;
@@ -121,7 +121,6 @@ main()
 	printf("input records:\n");
 	head = creat();
 	print(head);
-	/**
 	printf("\ninput the deleted number:");
 	scanf("%1d", &del_num);
 	head = del(head, del_num);
@@ -130,5 +129,4 @@ main()
 	scanf("%1d, %f", &stu.num, &stu.score);
 	head = insert(head, &stu);
 	print(head);
-	**/
 }
